@@ -8,11 +8,11 @@ import api from '../../api/api';
 function* getPostSaga() {
   try {
     const { data: payload } = yield api.get('/news');
-    yield put({ type: actionTypes.NEWS_RECEIVED, payload });
+    yield put({ type: actionTypes.GET_NEWS_RECEIVED, payload });
   } catch (err) {
-    yield put({ type: actionTypes.NEWS_REJECTED, error: err.message });
+    yield put({ type: actionTypes.GET_NEWS_REJECTED, error: err.message });
   }
 }
 export default function* watcherSaga() {
-  yield takeEvery(actionTypes.NEWS_REQUESTED, getPostSaga);
+  yield takeEvery(actionTypes.GET_NEWS_REQUESTED, getPostSaga);
 }

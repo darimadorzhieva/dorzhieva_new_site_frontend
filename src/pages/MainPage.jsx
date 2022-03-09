@@ -1,17 +1,18 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
-import Stack from '@mui/material/Stack';
-import NewsCard from '../../components/NewsCard/NewsCard';
-import getNewsList from '../../redux/actions/action';
-import Loading from '../../components/Loading/Loading';
-import HeaderBar from '../../components/HeaderBar/HeaderBar';
+import getNews from '../redux/actions/actionCreators';
+// import Alert from '@mui/material/Alert';
+// import AlertTitle from '@mui/material/AlertTitle';
+// import Stack from '@mui/material/Stack';
+// import NewsCard from '../../components/NewsCard/NewsCard';
+// import getNewsList from '../../redux/actions/action';
+// import Loading from '../../components/Loading/Loading';
+// import HeaderBar from '../../components/HeaderBar/HeaderBar';
 
 function MainPage() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getNewsList());
+    dispatch(getNews());
   }, [dispatch]);
   const {
     content,

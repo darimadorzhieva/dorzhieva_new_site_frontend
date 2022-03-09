@@ -5,23 +5,24 @@ const initialState = {
   fetching: false,
   error: null,
 };
-export default function postsReducer(state = initialState, action = {}) {
+
+export default function newsReducer(state = initialState, action = {}) {
   switch (action.type) {
-    case actionTypes.NEWS_REQUESTED:
+    case actionTypes.GET_NEWS_REQUESTED:
       return {
         ...state,
         fetching: true,
         content: [],
         error: null,
       };
-    case actionTypes.NEWS_RECEIVED:
+    case actionTypes.GET_NEWS_RECEIVED:
       return {
         ...state,
         fetching: false,
         content: action.payload,
         error: null,
       };
-    case actionTypes.NEWS_REJECTED:
+    case actionTypes.GET_NEWS_REJECTED:
       return {
         ...state,
         fetching: false,
