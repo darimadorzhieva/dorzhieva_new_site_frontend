@@ -7,13 +7,13 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-export default function NewsCard({ news }) {
+export default function NewsCard({ data }) {
   const {
     title,
     image,
     description,
     tags,
-  } = news;
+  } = data;
 
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -40,7 +40,7 @@ export default function NewsCard({ news }) {
 }
 
 NewsCard.propTypes = {
-  news: shape({
+  data: shape({
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     tags: PropTypes.string.isRequired,

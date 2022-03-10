@@ -12,16 +12,19 @@ export default function newsReducer(state = initialState, action = {}) {
       return {
         ...state,
         fetching: true,
+        error: null,
       };
     case actionTypes.GET_NEWS_RECEIVED:
       return {
         ...state,
         fetching: false,
         news: action.payload,
+        error: null,
       };
     case actionTypes.GET_NEWS_REJECTED:
       return {
         ...state,
+        fetching: false,
         error: action.error,
       };
     default: return state;

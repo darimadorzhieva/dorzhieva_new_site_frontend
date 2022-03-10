@@ -38,7 +38,7 @@ function MainPage() {
   return (
     <div>
       {news.map((item) => (
-        <NewsCard news={item} key={item.id} />
+        <NewsCard data={item} key={item.id} />
       ))}
     </div>
   );
