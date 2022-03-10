@@ -1,27 +1,47 @@
 import React from 'react';
-import ContentLoader from 'react-content-loader';
+import PropTypes, { shape } from 'prop-types';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { CardActionArea } from '@mui/material';
 
-function MyLoader(props) {
+export default function NewsCard({ news }) {
+  const {
+    title,
+    image,
+    description,
+    tags,
+  } = news;
   return (
-    <ContentLoader
-      speed
-      rtl
-      speed={2}
-      width={1600}
-      height={360}
-      viewBox="0 0 1600 360"
-      backgroundColor="#f3f3f3"
-      foregroundColor="#ecebeb"
-      {...props}
-    >
-      <rect x="116" y="32" rx="3" ry="3" width="88" height="6" />
-      <rect x="117" y="66" rx="3" ry="3" width="52" height="6" />
-      <rect x="25" y="114" rx="3" ry="3" width="410" height="6" />
-      <rect x="24" y="139" rx="3" ry="3" width="380" height="6" />
-      <rect x="24" y="164" rx="3" ry="3" width="178" height="6" />
-      <circle cx="65" cy="54" r="37" />
-    </ContentLoader>
+    <Card sx={{ maxWidth: 345 }}>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          height="240"
+          image={image}
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {title}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {description}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {tags}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
   );
 }
 
-export default MyLoader;
+NewsCard.propTypes = {
+  news: shape({
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    tags: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+  }).isRequired,
+};

@@ -1,18 +1,16 @@
-import {
-  takeEvery,
-  put,
-} from 'redux-saga/effects';
-import * as actionTypes from '../actions/actionTypes';
-import api from '../../api/api';
+import { takeEvery, put } from 'redux-saga/effects';
+import actionTypes from '../actions/actionTypes';
+import api from '../../api';
 
-function* getPostSaga() {
+function* getNews() {
   try {
     const { data: payload } = yield api.get('/news');
     yield put({ type: actionTypes.GET_NEWS_RECEIVED, payload });
-  } catch (err) {
-    yield put({ type: actionTypes.GET_NEWS_REJECTED, error: err.message });
+  } catch (error) {
+    yield put({ type: actionTypes.GET_NEWS_REJECTED, error: error.message });
   }
 }
-export default function* watcherSaga() {
-  yield takeEvery(actionTypes.GET_NEWS_REQUESTED, getPostSaga);
+
+export default function* watcherGetNews() {
+  yield takeEvery(actionTypes.GET_NEWS_REQUESTED, getNews);
 }
