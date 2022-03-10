@@ -1,7 +1,7 @@
 import actionTypes from '../actions/actionTypes';
 
 const initialState = {
-  content: [],
+  news: [],
   fetching: false,
   error: null,
 };
@@ -12,21 +12,16 @@ export default function newsReducer(state = initialState, action = {}) {
       return {
         ...state,
         fetching: true,
-        content: [],
-        error: null,
       };
     case actionTypes.GET_NEWS_RECEIVED:
       return {
         ...state,
         fetching: false,
-        content: action.payload,
-        error: null,
+        news: action.payload,
       };
     case actionTypes.GET_NEWS_REJECTED:
       return {
         ...state,
-        fetching: false,
-        content: [],
         error: action.error,
       };
     default: return state;

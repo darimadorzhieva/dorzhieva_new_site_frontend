@@ -1,4 +1,5 @@
-import { takeEvery, put } from 'redux-saga/effects';
+import { takeLatest, put } from 'redux-saga/effects';
+
 import actionTypes from '../actions/actionTypes';
 import api from '../../api';
 
@@ -12,5 +13,5 @@ function* getNews() {
 }
 
 export default function* watcherGetNews() {
-  yield takeEvery(actionTypes.GET_NEWS_REQUESTED, getNews);
+  yield takeLatest(actionTypes.GET_NEWS_REQUESTED, getNews);
 }

@@ -5,6 +5,7 @@ import Alert from '@mui/material/Alert';
 import CircularProgress from '@mui/material/CircularProgress';
 
 import getNews from '../../redux/actions/actionCreators';
+
 import NewsCard from '../../components/NewsCard/NewsCard';
 
 function MainPage() {
@@ -15,7 +16,7 @@ function MainPage() {
   }, [dispatch]);
 
   const {
-    content,
+    news,
     error,
     fetching,
   } = useSelector((state) => state.news);
@@ -36,8 +37,8 @@ function MainPage() {
 
   return (
     <div>
-      {content.map((news) => (
-        <NewsCard key={news.id} news={news} />
+      {news.map((item) => (
+        <NewsCard news={item} key={item.id} />
       ))}
     </div>
   );
