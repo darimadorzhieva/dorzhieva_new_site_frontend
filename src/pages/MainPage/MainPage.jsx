@@ -8,6 +8,8 @@ import getNews from '../../redux/actions/actionCreators';
 
 import NewsCard from '../../components/NewsCard/NewsCard';
 
+import './MainPage.css';
+
 function MainPage() {
   const dispatch = useDispatch();
 
@@ -36,7 +38,7 @@ function MainPage() {
   }
 
   return (
-    <div>
+    <div className="card">
       {news.map((item) => (
         <NewsCard data={item} key={item.id} />
       ))}
